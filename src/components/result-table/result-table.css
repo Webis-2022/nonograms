@@ -1,0 +1,16 @@
+.result-table {
+  border-collapse: collapse;
+}
+
+th {
+  border: 1px solid;
+}
+
+.table-row {
+  text-align: center;
+}
+
+td {
+  border: 1px solid;
+  width: 120px;
+}

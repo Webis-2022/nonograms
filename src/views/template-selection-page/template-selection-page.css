@@ -1,0 +1,18 @@
+.return-button {
+  width: 100%;
+}
+
+.return-button img {
+  width: 50px;
+  margin-left: 5%;
+  cursor: pointer;
+}
+
+.template-selector {
+  justify-content: center;
+}
+
+.template-selector span {
+  font-size: 1.6em;
+  font-weight: 700;
+}

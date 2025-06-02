@@ -1,0 +1,7 @@
+.button-set {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  margin-top: 15px;
+  margin-bottom: 5%;
+}

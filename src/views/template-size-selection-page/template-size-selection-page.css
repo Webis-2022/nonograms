@@ -1,0 +1,46 @@
+.title {
+  color: #fff;
+  text-align: center;
+}
+
+.field-size__wrapper,
+.templates-wrapper {
+  width: 85%;
+  background-color: #000;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding-bottom: 2em;
+  padding-top: 2em;
+  margin: 2em;
+}
+
+.field-size__selector,
+.template-selector {
+  width: 80%;
+  background-color: #fff;
+  padding-bottom: 2em;
+  padding-top: 2em;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+}
+
+.field-size__selector {
+  justify-content: space-between;
+}
+
+.field-size__selector img {
+  width: 3em;
+  height: 3em;
+  margin-left: 1em;
+}
+
+.field-size__selector span {
+  align-self: center;
+  margin-right: 1em;
+  font-size: 1.6em;
+  font-weight: 700;
+}
