@@ -15,6 +15,7 @@ function renderRoute(path, buttonNumber, defaultFieldSize) {
         break;
       }
       case '/template-selection': {
+        console.log('DFS', defaultFieldSize)
         createTemplateSelectionPage(defaultFieldSize);
         break;
       }
@@ -34,18 +35,34 @@ function renderRoute(path, buttonNumber, defaultFieldSize) {
   }, 400);
 }
 
-export function navigateTo(route, buttonNumber, size) {
-  window.history.pushState({}, '', route);
-  renderRoute(route, size, buttonNumber);
+export function navigateTo(route, size, buttonNumber = '') {
+  if (buttonNumber !== undefined) {
+    localStorage.setItem('buttonNumber', buttonNumber);
+  }
+  if (size !== undefined) {
+    localStorage.setItem('fieldSize', size);
+  }
+  window.location.hash = route;
+  renderRoute(route, buttonNumber, size);
 }
 
-document.addEventListener('DOMContentLoaded', (_, buttonNumber, fieldSize) => {
-  const route = window.location.pathname;
+document.addEventListener('DOMContentLoaded', () => {
+  clearPage();
+  if (!window.location.hash) {
+    window.location.hash = '/';
+  }
+  const route = window.location.hash.slice(1) || '/';
+  const buttonNumber = localStorage.getItem('buttonNumber');
+  const fieldSize = localStorage.getItem('fieldSize');
+  console.log('hash', window.location.hash);
   renderRoute(route, buttonNumber, fieldSize);
 })
 
 
-window.addEventListener('popstate', (_, buttonNumber, fieldSize) => {
+window.addEventListener('hashchange', () => {
+  const route = window.location.hash.slice(1) || '/';
   clearPage();
-  renderRoute(window.location.pathname, buttonNumber, fieldSize);
-})
+  const buttonNumber = localStorage.getItem('buttonNumber');
+  const fieldSize = localStorage.getItem('fieldSize');
+  renderRoute(route, buttonNumber, fieldSize);
+});

@@ -4,8 +4,10 @@ import { createTemplateSizeSelectionPage } from '../template-size-selection-page
 import './start-page.css';
 import { navigateTo } from '../../utils/navigate';
 import { makeBackgroundBlack } from '../../utils/make-background-color-black';
+import { clearPage } from '../../utils/clear-page';
 
 export function createStartPage() {
+  clearPage();
   makeBackgroundBlack();
   const contentWrapper = createHtmlElement('div', ['content-wrapper']);
   const gameTitleEng = createHtmlElement('h1', ['game-title-eng'], 'Nonograms');

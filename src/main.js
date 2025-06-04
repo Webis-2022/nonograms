@@ -6,4 +6,7 @@ import { clearPage } from './utils/clear-page';
 
 import './assets/css/styles.css';
 
+// localStorage.removeItem('fieldSize');
+// localStorage.removeItem('buttonNumber');
+
 createStartPage();

@@ -11,6 +11,7 @@ export const middleFields = ['home', 'tv', 'football', 'tree', 'mouse'];
 export const bigFields = ['spades', 'sun', 'church', 'lamp', 'swan'];
 
 export function createTemplateSelectionPage(playGroundSize) {
+  console.log('playGroundSize:', playGroundSize);
   let templatesArr = [];
   if (playGroundSize === '5x5') {
     templatesArr = smallFields;
@@ -19,7 +20,6 @@ export function createTemplateSelectionPage(playGroundSize) {
   } else if (playGroundSize === '15x15') {
     templatesArr = bigFields;
   }
-
   clearPage();
   makeBackgroundBlack();
   const templatesWrapper = createHtmlElement('div', ['templates-wrapper']);
@@ -35,7 +35,7 @@ export function createTemplateSelectionPage(playGroundSize) {
   returnButton.addEventListener('click', returnButtonHandler);
   templatesWrapper.append(returnButton, title);
 
-  for (let j = 0; j < 5; j += 1) {
+  for (let j = 0; j < templatesArr.length; j += 1) {
     const templateSelector = createHtmlElement('div', ['template-selector']);
     templateSelector.setAttribute('data-number', j);
 
@@ -48,63 +48,10 @@ export function createTemplateSelectionPage(playGroundSize) {
 
     const templateName = document.createElement('span');
     templateName.textContent = templatesArr[j].charAt(0).toUpperCase() + templatesArr[j].slice(1);
+    console.log('___', templatesArr[j]);
 
     templateSelector.appendChild(templateName);
     templatesWrapper.appendChild(templateSelector);
   }
   document.body.appendChild(templatesWrapper);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// returnButton.addEventListener('click', () => {
-//   clearPage();
-//   createTemplateSizeSelectionPage();
-
-//   const fieldSizeSelectors = document.querySelectorAll('.field-size__selector');
-//   fieldSizeSelectors.forEach((button) => {
-//     button.replaceWith(button.cloneNode(true));
-//   })
-
-//   const newFieldSizeSelectors = document.querySelectorAll('.field-size__selector');
-//   newFieldSizeSelectors.forEach((button) => {
-//     button.addEventListener('click', (event) => {
-//       const playGroundSize = event.target.textContent;
-//       showTemplates(playGroundSize);
-
-//     // Repeat Event listener
-
-//       const templateButtons = document.querySelectorAll('.template-selector');
-//       templateButtons.forEach((button) => button.addEventListener('click', (event) => {
-//         getTemplateData(event,playGroundSize);
-//         removeAdditionalField();
-//       }))
-//     });
-//   })
-// })
-
-// for(let j = 0; j < 5; j++) {
-//   const templateSelector = document.createElement('div');
-//   templateSelector.classList.add('template-selector');
-//   templateSelector.setAttribute('data-number', j);
-
-//   const templateName = document.createElement('span');
-//   templateName.textContent = templatesArr[j].charAt(0).toUpperCase() + templatesArr[j].slice(1);;
-
-//   templateSelector.appendChild(templateName);
-//   templatesWrapper.appendChild(templateSelector);
-// }
-// body.appendChild(templatesWrapper)
